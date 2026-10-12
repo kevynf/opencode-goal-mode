@@ -1,53 +1,72 @@
 # OpenCode Goal Mode
 
-[中文文档](README.zh-CN.md)
+Language: [中文](README.zh-CN.md) · **English**
 
-A goal-oriented OpenCode V2 mode implemented only with OpenCode's documented Markdown Agent and Markdown Command formats.
+A goal-oriented mode built only with OpenCode V2's documented Markdown Agent and Markdown Command formats.
 
 ## Install
 
-Send this one-line instruction to OpenCode or another coding agent:
+Send this short structured prompt to OpenCode:
 
 ```text
-Install OpenCode Goal Mode from https://github.com/kevynf/opencode-goal-mode: read README.md and the files under .opencode/, copy .opencode/ into the current project root; if I explicitly request a global installation, copy it into ~/.config/opencode/; if a same-named file differs, stop and report the conflict without overwriting, deleting, or making backups, then run opencode reload and opencode debug agents to verify that goal is a visible primary Agent.
+Source: https://github.com/kevynf/opencode-goal-mode
+Task: install Goal Mode
+Scope: copy the repository's .opencode/ into the current project; install globally only when I explicitly request ~/.config/opencode/
+Rules: read README.md; if a same-named file differs, stop and report it; do not overwrite, delete, or back up files
+Acceptance: run opencode reload and opencode debug agents; confirm goal is a visible primary Agent
 ```
 
-Official project layout:
+This follows OpenCode's documented file discovery model:
 
 ```text
-target-project/
-└── .opencode/
-    ├── agents/goal.md
-    └── commands/
-        ├── goal.md
-        ├── goal-status.md
-        ├── goal-pause.md
-        ├── goal-resume.md
-        └── goal-cancel.md
+Project: <project>/.opencode/agents/ and <project>/.opencode/commands/
+Global:  ~/.config/opencode/agents/ and ~/.config/opencode/commands/
 ```
 
-For personal global use, copy the same files into:
+No npm package, plugin, or installer script is required.
+
+## Examples
+
+Start a goal with explicit acceptance criteria:
 
 ```text
-~/.config/opencode/agents/
-~/.config/opencode/commands/
+/goal Fix the login failure. Success: relevant tests pass and the public API remains unchanged.
 ```
 
-This is OpenCode's documented configuration discovery model. The project does not add an installer, npm package, or plugin.
-
-## Use
+Inspect the current state:
 
 ```text
-/goal Fix the login failure and verify the relevant tests pass
 /goal-status
+```
+
+Pause and resume:
+
+```text
 /goal-pause
 /goal-resume
+```
+
+When blocked, the Agent reports completed work, the concrete blocker, attempts, and the minimum needed to continue. It reports completion only after every criterion has verification evidence. Cancel the goal while keeping code changes:
+
+```text
 /goal-cancel
 ```
 
 You can also press Tab, select `goal`, and enter the objective directly.
 
-Goal state stays in the current conversation. The mode does not claim cross-session persistence, background continuation, or hard token/cost budgets.
+## Boundaries
+
+- Tracks objective, success criteria, constraints, evidence, remaining work, and blockers.
+- Continues until completion, pause, cancellation, or a concrete blocker.
+- Uses the official prompt sections Harness, Communication, Working in codebases, Delegation, Destructive actions, and Autonomy.
+- State remains in the current conversation; there is no cross-session persistence, background continuation, or hard token/cost budget.
+
+## Development
+
+```text
+npm ci
+npm run check
+```
 
 ## Official references
 
