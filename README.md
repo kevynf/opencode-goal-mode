@@ -1,6 +1,6 @@
 # OpenCode Goal Mode
 
-[中文](README.zh-CN.md) | **English**
+English | [中文](README.zh-CN.md)
 
 A goal-oriented mode built only with OpenCode V2's documented Markdown Agent and Markdown Command formats.
 
