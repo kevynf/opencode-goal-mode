@@ -1,0 +1,14 @@
+{
+  "name": "opencode-goal-mode",
+  "version": "0.1.0",
+  "description": "A publishable OpenCode V2 Goal primary agent and command set.",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "test": "node --test",
+    "check": "npm run validate && npm test"
+  }
+}
