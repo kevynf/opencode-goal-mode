@@ -9,14 +9,7 @@ A goal-oriented mode built only with OpenCode V2's documented Markdown Agent and
 Send this short structured prompt to OpenCode:
 
 ```text
-Install OpenCode Goal Mode.
-
-- **Source** https://github.com/kevynf/opencode-goal-mode
-- **Read** README.md and the repository's `.opencode/`
-- **Scope** project-level or global, as specified by the user
-- **Conflicts** stop and report same-named files with different content
-- **Verify** run `opencode reload` and `opencode debug agents`
-- **Result** confirm that `goal` is a visible `primary` Agent
+Install Goal Mode from https://github.com/kevynf/opencode-goal-mode: read `.opencode/` and copy it to the requested project or global OpenCode configuration directory; stop and report any same-named file with different content; then run `opencode reload` and `opencode debug agents` to confirm that `goal` loaded.
 ```
 
 OpenCode's documented configuration locations:
@@ -55,12 +48,11 @@ When blocked, the Agent reports completed work, the concrete blocker, attempts, 
 
 You can also press Tab, select `goal`, and enter the objective directly.
 
-## Boundaries
+## How it works
 
-- Tracks objective, success criteria, constraints, evidence, remaining work, and blockers.
-- Continues until completion, pause, cancellation, or a concrete blocker.
-- Uses the official prompt sections Harness, Communication, Working in codebases, Delegation, Destructive actions, and Autonomy.
-- State remains in the current conversation; there is no cross-session persistence, background continuation, or hard token/cost budget.
+Goal first confirms the objective and acceptance criteria, then works and verifies the result. It continues while necessary work remains and can be completed autonomously, and reports when it finishes, is paused, is cancelled, or hits a concrete blocker.
+
+The goal stays in the current conversation. A new session requires a new objective, and the Agent does not run in the background.
 
 ## Development
 

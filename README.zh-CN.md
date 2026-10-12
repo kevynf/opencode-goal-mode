@@ -9,14 +9,7 @@
 把这段短提示词发送给 OpenCode：
 
 ```text
-请安装 OpenCode Goal Mode。
-
-- **来源** https://github.com/kevynf/opencode-goal-mode
-- **读取** README.zh-CN.md 和仓库中的 `.opencode/`
-- **安装范围** 项目级或全局级，按用户指定
-- **文件冲突** 同名文件内容不同就停止并报告
-- **验证** 运行 `opencode reload` 和 `opencode debug agents`
-- **结果** 确认 `goal` 是可见的 `primary` Agent
+请从 https://github.com/kevynf/opencode-goal-mode 安装 Goal Mode：读取仓库中的 `.opencode/`，按指定范围复制到项目或全局 OpenCode 配置目录；遇到内容不同的同名文件就停止并报告；完成后运行 `opencode reload` 和 `opencode debug agents`，确认 `goal` 已加载。
 ```
 
 OpenCode 官方配置发现位置：
@@ -55,12 +48,11 @@ OpenCode 官方配置发现位置：
 
 也可以按 Tab 选择 `goal` 后直接输入目标。
 
-## 能力边界
+## 工作方式
 
-- 维护目标、成功标准、约束、完成证据、剩余工作和阻塞原因。
-- 继续执行直到完成、暂停、取消或具体阻塞。
-- 使用官方提示词结构：Harness、Communication、Working in codebases、Delegation、Destructive actions、Autonomy。
-- 状态只保存在当前会话，不提供跨会话持久化、后台自动续跑或硬性 token/费用预算。
+Goal 会先确认目标和验收标准，再执行和验证。只要还有能自主完成的必要工作，它就会继续；完成、暂停、取消或遇到实际阻塞时会说明当前结果。
+
+目标记录只存在当前对话里。重新开启会话后需要重新提供目标，也不会在后台自动运行。
 
 ## 开发检查
 
