@@ -1,6 +1,6 @@
 # OpenCode Goal Mode
 
-Language: [中文](README.zh-CN.md) · **English**
+[中文](README.zh-CN.md) | **English**
 
 A goal-oriented mode built only with OpenCode V2's documented Markdown Agent and Markdown Command formats.
 
@@ -9,21 +9,22 @@ A goal-oriented mode built only with OpenCode V2's documented Markdown Agent and
 Send this short structured prompt to OpenCode:
 
 ```text
-Source: https://github.com/kevynf/opencode-goal-mode
-Task: install Goal Mode
-Scope: copy the repository's .opencode/ into the current project; install globally only when I explicitly request ~/.config/opencode/
-Rules: read README.md; if a same-named file differs, stop and report it; do not overwrite, delete, or back up files
-Acceptance: run opencode reload and opencode debug agents; confirm goal is a visible primary Agent
+Install OpenCode Goal Mode.
+
+- **Source** https://github.com/kevynf/opencode-goal-mode
+- **Read** README.md and the repository's `.opencode/`
+- **Scope** project-level or global, as specified by the user
+- **Conflicts** stop and report same-named files with different content
+- **Verify** run `opencode reload` and `opencode debug agents`
+- **Result** confirm that `goal` is a visible `primary` Agent
 ```
 
-This follows OpenCode's documented file discovery model:
+OpenCode's documented configuration locations:
 
-```text
-Project: <project>/.opencode/agents/ and <project>/.opencode/commands/
-Global:  ~/.config/opencode/agents/ and ~/.config/opencode/commands/
-```
-
-No npm package, plugin, or installer script is required.
+| Scope | Agents | Commands |
+| --- | --- | --- |
+| Project | `<project>/.opencode/agents/` | `<project>/.opencode/commands/` |
+| Global | `~/.config/opencode/agents/` | `~/.config/opencode/commands/` |
 
 ## Examples
 
@@ -73,4 +74,3 @@ npm run check
 - [OpenCode V2 Agents](https://opencode.ai/v2/docs/agents/)
 - [OpenCode V2 Commands](https://opencode.ai/v2/docs/commands/)
 - [OpenCode V2 Config](https://opencode.ai/v2/docs/config/)
-

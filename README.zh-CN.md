@@ -1,6 +1,6 @@
 # OpenCode Goal Mode
 
-语言：**中文** · [English](README.md)
+[中文](README.zh-CN.md) | [English](README.md)
 
 基于 OpenCode V2 官方 Markdown Agent 与 Markdown Command 的目标工作模式。
 
@@ -9,25 +9,26 @@
 把这段短提示词发送给 OpenCode：
 
 ```text
-来源：https://github.com/kevynf/opencode-goal-mode
-任务：安装 Goal Mode
-范围：复制仓库 .opencode/ 到当前项目；只有我明确要求时才安装到 ~/.config/opencode/
-规则：读取 README.zh-CN.md；同名文件内容不同就停止并报告，不覆盖、不删除、不备份
-验收：运行 opencode reload 和 opencode debug agents，确认 goal 是可见的 primary Agent
+请安装 OpenCode Goal Mode。
+
+- **来源** https://github.com/kevynf/opencode-goal-mode
+- **读取** README.zh-CN.md 和仓库中的 `.opencode/`
+- **安装范围** 项目级或全局级，按用户指定
+- **文件冲突** 同名文件内容不同就停止并报告
+- **验证** 运行 `opencode reload` 和 `opencode debug agents`
+- **结果** 确认 `goal` 是可见的 `primary` Agent
 ```
 
-这是 OpenCode 官方文件发现方式：
+OpenCode 官方配置发现位置：
 
-```text
-项目级：<项目>/.opencode/agents/ 和 <项目>/.opencode/commands/
-全局级：~/.config/opencode/agents/ 和 ~/.config/opencode/commands/
-```
-
-本项目不需要 npm、npx、插件或安装脚本。
+| 范围 | Agent | Commands |
+| --- | --- | --- |
+| 项目 | `<项目>/.opencode/agents/` | `<项目>/.opencode/commands/` |
+| 全局 | `~/.config/opencode/agents/` | `~/.config/opencode/commands/` |
 
 ## 使用示例
 
-开始一个目标：
+开始目标：
 
 ```text
 /goal 修复登录失败问题；成功标准：相关测试通过，且不改变公开 API
@@ -39,14 +40,14 @@
 /goal-status
 ```
 
-暂停后继续：
+暂停并继续：
 
 ```text
 /goal-pause
 /goal-resume
 ```
 
-遇到阻塞时，Goal Agent 应报告：已完成内容、具体阻塞、已尝试方法和继续所需的最小信息。满足全部成功标准后，必须给出验证证据再报告完成。取消目标但保留代码改动：
+遇到阻塞时，Goal Agent 报告已完成内容、具体阻塞、已尝试方法和继续所需的最小信息。满足全部成功标准后，先给出验证证据，再报告完成。取消目标并保留代码改动：
 
 ```text
 /goal-cancel
@@ -73,4 +74,3 @@ npm run check
 - [OpenCode V2 Agents](https://opencode.ai/v2/docs/agents/)
 - [OpenCode V2 Commands](https://opencode.ai/v2/docs/commands/)
 - [OpenCode V2 Config](https://opencode.ai/v2/docs/config/)
-
